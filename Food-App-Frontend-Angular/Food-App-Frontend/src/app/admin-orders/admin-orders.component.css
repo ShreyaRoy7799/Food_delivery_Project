@@ -1,0 +1,135 @@
+/* Page container */
+.orders-page {
+  padding: 40px 50px;
+  background: #f6f7fb;
+  min-height: 100vh;
+}
+
+/* Header section */
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header-section h1 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* Export button */
+.export-btn {
+  padding: 10px 18px;
+  background: #4d79ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.export-btn:hover {
+  background: #355ee8;
+}
+
+/* Orders grid */
+.orders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 22px;
+}
+
+/* Order card */
+.order-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: 0.25s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.14);
+}
+
+/* Card header */
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* Status tags */
+.status-tag {
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-tag.placed {
+  background: #e3e8ff;
+  color: #4d79ff;
+}
+
+.status-tag.confirmed {
+  background: #ddfbe2;
+  color: #1a9c44;
+}
+
+.status-tag.out_for_delivery {
+  background: #fff0c2;
+  color: #c28800;
+}
+
+.status-tag.delivered {
+  background: #d7ffe0;
+  color: #0d8b3a;
+}
+
+/* Order details */
+.order-details p {
+  margin: 5px 0;
+  font-size: 15px;
+}
+
+/* Items list */
+.items-section h4 {
+  margin-top: 15px;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.items-section ul {
+  padding-left: 18px;
+}
+
+/* Dropdown */
+.status-section {
+  margin-top: 15px;
+}
+
+.status-select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #ccc;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.status-select:focus {
+  border-color: #4d79ff;
+  box-shadow: 0 0 6px rgba(77, 121, 255, 0.4);
+  outline: none;
+}

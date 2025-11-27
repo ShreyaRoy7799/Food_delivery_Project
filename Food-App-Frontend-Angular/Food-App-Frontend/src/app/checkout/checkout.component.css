@@ -1,0 +1,142 @@
+/* Wrapper */
+.checkout-wrapper {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px;
+  font-family: "Poppins", sans-serif;
+}
+
+.title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #ff6b2c;
+}
+
+/* Card Design */
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+}
+
+.card h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Order Summary */
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.item-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.qty {
+  color: #777;
+  font-size: 13px;
+}
+
+.item-right {
+  font-weight: 600;
+  color: #222;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+.total-price {
+  color: #ff6b2c;
+}
+
+/* Inputs */
+.input {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.input:focus {
+  border-color: #ff6b2c;
+  outline: none;
+}
+
+.textarea {
+  height: 110px;
+  resize: none;
+}
+
+/* Order Button */
+.place-order-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  background: #ff6b2c;
+  border: none;
+  color: white;
+  font-size: 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.place-order-btn:hover {
+  background: #ff4f0d;
+  transform: translateY(-3px);
+}
+
+/* Empty Cart UI */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.empty-state img {
+  width: 140px;
+  opacity: 0.8;
+}
+
+.go-back-btn {
+  margin-top: 18px;
+  padding: 12px 26px;
+  background: #ff6b2c;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.go-back-btn:hover {
+  background: #ff4f0d;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+}

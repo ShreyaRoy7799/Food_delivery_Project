@@ -1,42 +1,164 @@
-  h2{
-    margin-left: 15px; 
-    margin-bottom: 10px;
-    color: rgb(0, 191, 255);
+/* ---------- HEADER ---------- */
+.header {
+  width: 100%;
+  padding: 18px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 40px;
+}
+
+.logo span {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ff6b2c;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #444;
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ff6b2c;
+}
+
+
+/* ---------- PROFILE DROPDOWN ---------- */
+.profile {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile img {
+  width: 40px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.profile img:hover {
+  transform: scale(1.1);
+}
+
+.profile-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  width: 180px;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  z-index: 1000;
+}
+
+.menu-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user-name {
+  font-weight: bold;
+  color: #333;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.menu-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #ff6b2c;
+  color: white;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.menu-btn:hover {
+  background: #ff4a04;
+}
+
+
+/* ---------- PAGE CONTAINER ---------- */
+.page-container {
+  padding: 20px 5%;
+}
+
+
+/* ---------- FOOTER ---------- */
+.footer {
+  background: #ff6b2c;
+  color: white;
+  padding: 50px 0;
+  margin-top: 70px;
+  border-radius: 22px 22px 0 0;
+}
+
+.footer-content {
+  text-align: center;
+  width: 90%;
+  margin: auto;
+}
+
+.footer-content h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.copy {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
   }
-  .form-group{
-    color: rgb(0, 191, 255);
-  }
-  .btn-btn-primary{
-    margin-left: 0px; 
-    margin-top: 10px;
-    color: black;
-    position: relative;
-  }
-  .container{
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    margin-top: 50px;
-    width: 50%;
-    height:max-content;
-    margin-bottom: 10px;
-   }
-   .navbar-brand{
-    font-size: 25px;
-   }
-   .card{
-    font-weight:bolder; 
-    font-size:20px;
-    text-align: center;
-   }
-   #btn-l{
-      margin-right: 100px;
-   }
-   #btn-r{
-    margin-left: 60px;
-   }
-   a {color:#FF0000;
-    text-decoration: none;}         /* Unvisited link  */
-    a:visited {color:black} /* Visited link    */
-    a:hover {color:rgb(30, 191, 255);}   /* Mouse over link */
+}

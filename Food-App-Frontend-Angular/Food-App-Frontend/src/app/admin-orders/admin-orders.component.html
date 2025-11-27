@@ -1,0 +1,54 @@
+<div class="orders-page">
+
+  <div class="header-section">
+    <h1>🧾 Manage Orders</h1>
+
+    <button class="export-btn" (click)="exportDeliveredReport()">
+      📄 Export Delivered Orders
+    </button>
+  </div>
+
+  <div class="orders-grid">
+
+    <div class="order-card" *ngFor="let order of orders">
+
+      <div class="order-header">
+        <h2>Order #{{ order.id }}</h2>
+        <span class="status-tag" [ngClass]="order.status.toLowerCase()">
+          {{ order.status.replace('_', ' ') }}
+        </span>
+      </div>
+
+      <div class="order-details">
+        <p><strong>Customer:</strong> {{ order.customerName }}</p>
+        <p><strong>Phone:</strong> {{ order.phone }}</p>
+        <p><strong>Address:</strong> {{ order.addressLine1 }}</p>
+        <p><strong>Total:</strong> ₹{{ order.totalAmount }}</p>
+      </div>
+
+      <div class="items-section">
+        <h4>Items</h4>
+        <ul>
+          <li *ngFor="let item of order.items">
+            {{ item.name }} — ₹{{ item.price }} × {{ item.quantity }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="status-section">
+        <label>Update Status:</label>
+        <select class="status-select"
+                (change)="updateStatus(order.id, getSelectValue($event))">
+          <option *ngFor="let s of statuses"
+                  [value]="s"
+                  [selected]="s === order.status">
+            {{ s.replace('_', ' ') }}
+          </option>
+        </select>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

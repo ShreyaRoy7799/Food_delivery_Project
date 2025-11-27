@@ -8,7 +8,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface MenuItemRepository extends JpaRepository<MenuItem,Long> {
-    List<MenuItem> findByMenu_Id(Long id);
-    Optional<MenuItem> findByName(String name);
+public interface MenuItemRepository extends JpaRepository<MenuItem, Long> {
+
+    // Get all items for a specific menu
+    List<MenuItem> findByMenuId(Long menuId);
+
+	Optional<MenuItem> findByName(String name);
 }

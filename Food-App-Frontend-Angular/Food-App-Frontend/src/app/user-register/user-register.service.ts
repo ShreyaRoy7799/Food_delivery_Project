@@ -1,19 +1,17 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { UserDto } from "../dto/UserDto";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { UserDto } from '../dto/UserDto';
+import { environment } from '../../environments/environment';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class UserRegisterService {
 
-    private url = 'http://localhost:9099/api/v1.0/register';
+  private api = environment.apiUrl;
 
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-    createUser(newuser: UserDto): Observable<any>{
-        return this.http.post<UserDto>(this.url, newuser);
-    }
-
+  createUser(user: UserDto): Observable<any> {
+    return this.http.post<any>(`${this.api}/register`, user);
+  }
 }

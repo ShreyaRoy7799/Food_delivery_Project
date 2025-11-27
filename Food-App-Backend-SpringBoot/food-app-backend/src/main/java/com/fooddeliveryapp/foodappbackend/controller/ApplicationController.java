@@ -1,11 +1,8 @@
 package com.fooddeliveryapp.foodappbackend.controller;
 
 import com.fooddeliveryapp.foodappbackend.entity.*;
-import com.fooddeliveryapp.foodappbackend.exception.MenuItemNotFoundException;
-import com.fooddeliveryapp.foodappbackend.exception.MenuNotFoundException;
 import com.fooddeliveryapp.foodappbackend.exception.RestaurantNotFoundException;
 import com.fooddeliveryapp.foodappbackend.exception.UserNotFoundException;
-import com.fooddeliveryapp.foodappbackend.repository.MenuItemRepository;
 import com.fooddeliveryapp.foodappbackend.service.ApplicationService;
 import com.fooddeliveryapp.foodappbackend.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -17,16 +14,16 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Objects;
-
 
 @RestController
 @Slf4j
 public class ApplicationController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(ApplicationController.class);
+
     @Autowired
     private ApplicationService applicationService;
+
     @Autowired
     private UserService service;
 
@@ -41,10 +38,21 @@ public class ApplicationController {
         return applicationService.registration(user);
     }
 
+//    @PostMapping("/api/v1.0/login")
+//    public String userLogin(@RequestBody Login login) throws UserNotFoundException {
+//        return applicationService.userLogin(login);
+//    }
     @PostMapping("/api/v1.0/login")
-    public String userLogin(@Valid @RequestBody Login login) throws UserNotFoundException {
-       return applicationService.userLogin(login);
+    public LoginResponse userLogin(@RequestBody Login login) throws UserNotFoundException {
+        String result = applicationService.userLogin(login);
+
+        if (result.equals("success")) {
+            return new LoginResponse("success", "Login successful");
+        } else {
+            return new LoginResponse("failed", "Invalid username or password");
+        }
     }
+
     @GetMapping("/api/v1.0/users")
     public List<User> listUsers(Model model) {
         List<User> listUsers = service.listAll();
@@ -52,74 +60,50 @@ public class ApplicationController {
         return listUsers;
     }
 
+    // -----------------------------
+    // RESTAURANT OPERATIONS ONLY
+    // -----------------------------
 
-
-
-    //Controller for Menu related uses
-    @GetMapping(value = "/api/v1.0/foodapp/food/all")
-    public List<MenuItem> fetchMenus() {
-        LOGGER.info("Returned All food in the Database");
-        return applicationService.findAllFood();
-    }
-
-    @GetMapping(value = "/api/v1.0/foodapp/food/{id}")
-    public Menu findMenuById(@PathVariable("id") Long id) throws MenuNotFoundException {
-        LOGGER.info("Returned Food By its ID");
-        return applicationService.findMenuById(id);
-    }
-    @PutMapping(value = "/api/v1.0/foodapp/admin/food/{name}/edit")
-    public MenuItem editMenu(@PathVariable("name") String name,@RequestBody MenuItem menuItem) throws MenuItemNotFoundException {
-        LOGGER.info("Edited the menu");
-        return applicationService.editMenu(name,menuItem);
-    }
-
-    @PutMapping(value = "/api/v1.0/foodapp/food/{name}/rating/")
-    public MenuItem editRating(@PathVariable("name") String name,@RequestBody MenuItem menuItem) throws MenuItemNotFoundException {
-        LOGGER.info("Edited the Rating of the food");
-        return applicationService.editRating(name,menuItem);
-    }
-
-    //Controller for Restaurant uses
-
-    @GetMapping(value = "/api/v1.0/foodapp/restaurants/all")
+    @GetMapping("/api/v1.0/foodapp/restaurants/all")
     public List<Restaurant> fetchRestaurants(){
-        LOGGER.info("Returned All the Restaurant from the Database");
+        LOGGER.info("Returned All Restaurants");
         return applicationService.findAllRestaurant();
     }
 
-    @GetMapping(value = "/api/v1.0/foodapp/restaurants/{id}")
-    public Restaurant findRestaurantById(@PathVariable("id") Long id) throws RestaurantNotFoundException {
-        LOGGER.info("Returned Restaurant By its ID");
+    @GetMapping("/api/v1.0/foodapp/restaurants/{id}")
+    public Restaurant findRestaurantById(@PathVariable Long id) throws RestaurantNotFoundException {
+        LOGGER.info("Returned Restaurant By ID");
         return applicationService.findRestaurantById(id);
     }
 
-    @PostMapping(value = "/api/v1.0/admin/foodapp/restaurants/add")
+    @PostMapping("/api/v1.0/admin/foodapp/restaurants/add")
     public Restaurant addRestaurant(@Valid @RequestBody Restaurant restaurant){
-        LOGGER.info("Inside Add Restaurant method");
+        LOGGER.info("Added Restaurant");
         return applicationService.addRestaurant(restaurant);
     }
 
-    @PostMapping(value = "/api/v1.0/admin/foodapp/restaurants/upload")
+    @PostMapping("/api/v1.0/admin/foodapp/restaurants/upload")
     public List<Restaurant> uploadRestaurant(@Valid @RequestBody List<Restaurant> restaurantList){
-        LOGGER.info("Uploaded more than one Restaurant at a time");
+        LOGGER.info("Bulk Upload Restaurants");
         return applicationService.addBulkRestaurant(restaurantList);
     }
 
-    @PutMapping(value = "/api/v1.0/admin/foodapp/restaurants/update/{id}")
-    public Restaurant updateRestaurant(@PathVariable("id") Long id,@RequestBody Restaurant restaurant) throws RestaurantNotFoundException {
+    @PutMapping("/api/v1.0/admin/foodapp/restaurants/update/{id}")
+    public Restaurant updateRestaurant(@PathVariable Long id, @RequestBody Restaurant restaurant)
+            throws RestaurantNotFoundException {
         LOGGER.info("Updated a Restaurant");
-        return applicationService.updateRestaurant(id,restaurant);
+        return applicationService.updateRestaurant(id, restaurant);
     }
-
 
     @DeleteMapping("/api/v1.0/admin/foodapp/restaurants/delete/{id}")
-    public String deleteRestaurantByID(@PathVariable("id") Long id) throws RestaurantNotFoundException {
-        LOGGER.info("Deleted a Restaurant");
+    public String deleteRestaurantByID(@PathVariable Long id) throws RestaurantNotFoundException {
+        LOGGER.info("Deleted Restaurant");
         return applicationService.deleteRestaurantById(id);
     }
+
     @DeleteMapping("/api/v1.0/admin/foodapp/restaurants/delete/all")
     public String deleteAllRestaurants(){
-        LOGGER.info("Delete All Restaurant");
+        LOGGER.info("Deleted ALL Restaurants");
         return applicationService.deleteAllRestaurant();
     }
 }

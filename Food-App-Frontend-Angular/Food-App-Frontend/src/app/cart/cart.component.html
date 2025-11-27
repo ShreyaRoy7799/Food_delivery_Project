@@ -1,0 +1,36 @@
+<div class="cart-container" *ngIf="cartItems.length > 0">
+
+  <h1 class="title">🛒 Your Cart</h1>
+
+  <div class="cart-items-box">
+    <div *ngFor="let item of cartItems" class="cart-item">
+
+      <div class="item-info">
+        <strong class="item-name">{{ item.name }}</strong>
+        <p class="item-price">₹{{ item.price }}</p>
+      </div>
+
+      <div class="qty-controls">
+        <button class="qty-btn" (click)="decrease(item)">−</button>
+        <span class="qty">{{ item.quantity }}</span>
+        <button class="qty-btn" (click)="increase(item)">+</button>
+      </div>
+
+      <button class="remove-btn" (click)="remove(item)">Remove</button>
+    </div>
+  </div>
+
+  <div class="summary">
+    <h2>Total: <span>₹{{ total }}</span></h2>
+    <button routerLink="/checkout" class="checkout-btn">Proceed to Checkout →</button>
+  </div>
+
+</div>
+
+
+<!-- EMPTY STATE -->
+<div class="empty-cart" *ngIf="cartItems.length === 0">
+  <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Empty Cart">
+  <h2>Your cart is empty!</h2>
+  <button routerLink="/restaurants" class="go-back-btn">Browse Restaurants</button>
+</div>

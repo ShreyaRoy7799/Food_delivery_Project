@@ -1,0 +1,141 @@
+/* Wrapper */
+.dashboard-wrapper {
+  padding: 40px 50px;
+  background: #f6f7fb;
+  min-height: 100vh;
+}
+
+/* Heading */
+.heading {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.subheading {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* Stat Cards */
+.stat-card {
+  background: white;
+  border-radius: 14px;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.big-card {
+  grid-column: span 2;
+}
+
+.icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: white;
+}
+
+.bg-blue { background: #4d79ff; }
+.bg-green { background: #2ecc71; }
+.bg-orange { background: #ff9f43; }
+.bg-purple { background: #9b59b6; }
+
+.number {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+/* Status list */
+.stat-card ul {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  font-size: 15px;
+}
+
+.stat-card li {
+  margin: 6px 0;
+}
+
+.stat-card li span {
+  font-weight: 600;
+}
+
+/* Quick Actions */
+.section-title {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.btn.primary {
+  background: #4d79ff;
+  color: white;
+}
+
+.btn.primary:hover {
+  background: #3358cc;
+}
+
+.btn.secondary {
+  background: #f1f1f1;
+}
+
+.btn.secondary:hover {
+  background: #e1e1e1;
+}
+
+.btn.accent {
+  background: #ff9f43;
+  color: white;
+}
+
+.btn.accent:hover {
+  background: #e77f2a;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  font-size: 18px;
+  padding: 80px;
+  color: #555;
+}

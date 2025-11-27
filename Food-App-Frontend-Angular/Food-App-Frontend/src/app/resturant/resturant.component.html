@@ -1,1 +1,31 @@
-<p>resturant works!</p>
+<div class="restaurant-page">
+  <h2 class="title">Top Restaurants Near You</h2>
+
+  <div *ngIf="loading" class="info">Loading...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div class="restaurant-grid">
+    <div
+      class="restaurant-card"
+      *ngFor="let r of restaurants"
+      (click)="openRestaurant(r.id)"
+    >
+      <div class="image-wrapper">
+        <img [src]="r.image" [alt]="r.name" (error)="imageError($event)" />
+      </div>
+
+      <div class="card-body">
+        <h3 class="name">{{ r.name }}</h3>
+
+        <p class="tagline">Delicious food delivered fast!</p>
+
+        <div class="card-footer">
+          <span class="rating"> ⭐ {{ r.rating }} </span>
+
+          <!-- This correctly reads menu from backend -->
+          <span class="items"> {{ r.menuCount }} Menu Items </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

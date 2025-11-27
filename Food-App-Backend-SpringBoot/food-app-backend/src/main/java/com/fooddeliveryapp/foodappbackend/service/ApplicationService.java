@@ -26,9 +26,6 @@ public class ApplicationService {
 //
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private RoleRepository roleRepository;
-
     //find all the food in the menu
     public List<MenuItem> findAllFood(){
         return menuItemRepository.findAll();
@@ -172,13 +169,17 @@ public class ApplicationService {
 
     public String userLogin(Login login) throws UserNotFoundException {
         Optional<User> userCheck = userRepository.findByEmail(login.getEmail());
+
         if (userCheck.isPresent()) {
             User userDB = userCheck.get();
-            if (userDB.getEmail().toString().equals(login.getEmail().toString()) && userDB.getPassword().toString().equals(login.getPassword().toString())) {
+
+            if (userDB.getEmail().equals(login.getEmail()) &&
+                userDB.getPassword().equals(login.getPassword())) {
                 return "success";
             }
-            return "Failed";
+            return "failed";
         }
-        else throw new UserNotFoundException("This Email id is not registered in the database");
+        throw new UserNotFoundException("This Email id is not registered in the database");
     }
+
 }

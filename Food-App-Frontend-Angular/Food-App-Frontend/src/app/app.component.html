@@ -1,20 +1,57 @@
-<html>
-  <body>
-    <h2 class='navbar-brand' id="pageTitle">{{pageTitle}}</h2>
-   <div> 
-    <div>
-        <form class="container" id="contactForm">
-        <div class="card">
-          <h2 style=" color:rgb(30, 191, 255); ">Please Login to Continue</h2>
-          
-          <div class="btn-in">
-            <button id="btn-l"><a class='btn btn-link' routerLinkActive='active' routerLink='/user-login'>Login</a></button>
-            <button id="btn-r"><a class='btn btn-link' routerLinkActive='active' routerLink='/user-signup'>Signup</a></button>
-          </div>
-          <router-outlet></router-outlet>
-        </div>
-        </form>
+<!-- GLOBAL HEADER -->
+<header class="header">
+  <div class="logo">
+    <img src="https://cdn-icons-png.flaticon.com/512/3595/3595455.png" alt="Logo">
+    <span>FoodExpress</span>
+  </div>
+
+  <nav class="nav-links">
+    <a routerLink="/home">Home</a>
+    <a routerLink="/restaurants">Restaurants</a>
+    <a routerLink="/offers">Offers</a>
+    <a routerLink="/cart">Cart</a>
+    <a routerLink="/checkout">Checkout</a>
+  </nav>
+
+  <!-- PROFILE DROPDOWN -->
+  <div class="profile" (click)="toggleProfileMenu()">
+    <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png
+" alt="User">
+
+    <div class="profile-menu" *ngIf="showProfileMenu">
+
+      <!-- IF LOGGED IN -->
+      <div *ngIf="loggedInUser" class="menu-section">
+        <p class="user-name">👤 {{ loggedInUser }}</p>
+        <button class="menu-btn" (click)="logout()">Logout</button>
+      </div>
+
+      <!-- IF NOT LOGGED IN -->
+      <div *ngIf="!loggedInUser" class="menu-section">
+        <button class="menu-btn" routerLink="/user-login">Login</button>
+        <button class="menu-btn" routerLink="/user-signup">Signup</button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<div class="page-container">
+  <router-outlet></router-outlet>
 </div>
-</div>
-</body>
-</html>
+
+<footer class="footer">
+  <div class="footer-content">
+    <h2>FoodExpress</h2>
+    <p>Delivering happiness, one meal at a time.</p>
+
+    <div class="footer-links">
+      <a routerLink="/">Home</a>
+      <a routerLink="/restaurants">Restaurants</a>
+      <a routerLink="/contact">Contact Us</a>
+      <a routerLink="/terms">Terms & Conditions</a>
+    </div>
+
+    <p class="copy">© 2025 FoodExpress. All rights reserved.</p>
+  </div>
+</footer>

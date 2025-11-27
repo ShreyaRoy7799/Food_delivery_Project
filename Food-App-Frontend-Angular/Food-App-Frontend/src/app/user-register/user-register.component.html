@@ -1,44 +1,91 @@
-<html>
-<body>
-    <div>
-      <h2>Signup for a new account!</h2>
-      <div class="alert alert-danger" role="alert" *ngIf='errorOccured'>
-        {{errorMessage}}
-      </div>
-      <div class="alert alert-success" role="alert" *ngIf='isSuccess'>
-        {{sucessMessage | json}}
-      </div>
-    <div class="Register">
-      <form #createUserForm = "ngForm" (ngSubmit) = "onClickSubmit(createUserForm)">
-        <div class="form-group">
-          <label for="username">User Name</label>
-          <input type="text" class="form-control" name="username" placeholder="Enter a user name" ngModel required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" class="form-control" name="email" placeholder="Enter Email" ngModel required>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="text" class="form-control" name="password" placeholder="Enter Password" ngModel required>
-        </div>
-        <div class="form-group">
-            <label for="confrimPassword">Confirm Password</label>
-            <input type="password" class="form-control" name="confrimPassword" placeholder="Enter Password Again" ngModel required>
-        </div>
-        <div class="form-group">
-            <label for="accessLevel">Access</label>
-            <div class="form-group">
-            <input type="radio" name="userType">
-            <label for="userAccess">User</label>
-            <input type="radio" name="userType">
-            <label for="adminAccess">Admin</label></div>
-        </div>
-        <div *ngIf="passwordMatchError">
-            Password does not match</div>
-        <button type="submit" [disabled]="" class="btn btn-primary">Submit</button>
-      </form>
-      </div>
+<div class="signup-wrapper">
+  <div class="signup-card">
+
+    <h2 class="title">Create an Account ✨</h2>
+    <p class="subtitle">Join us and start your journey</p>
+
+    <!-- ERROR -->
+    <div class="alert error" *ngIf="errorOccured">
+      {{ errorMessage }}
     </div>
-</body>    
-</html>
+
+    <!-- SUCCESS -->
+    <div class="alert success" *ngIf="isSuccess">
+      {{ successMessage }}
+    </div>
+
+    <form #createUserForm="ngForm" (ngSubmit)="onClickSubmit(createUserForm)">
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input
+          type="text"
+          name="username"
+          placeholder="Enter your name"
+          ngModel
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          ngModel
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter password"
+          ngModel
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          name="confirmPassword"
+          placeholder="Re-enter password"
+          ngModel
+          required
+        />
+      </div>
+
+      <div *ngIf="passwordMatchError" class="mismatch">
+        ⚠ Passwords do not match
+      </div>
+
+      <div class="form-group">
+        <label>User Role</label>
+        <div class="radio-group">
+          <label>
+            <input type="radio" name="userType" value="USER" ngModel />
+            User
+          </label>
+
+          <label>
+            <input type="radio" name="userType" value="ADMIN" ngModel />
+            Admin
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-signup">Create Account</button>
+    </form>
+
+    <p class="bottom-text">
+      Already have an account?
+      <a routerLink="/login">Login here</a>
+    </p>
+
+  </div>
+</div>

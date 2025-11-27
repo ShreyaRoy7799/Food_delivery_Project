@@ -1,0 +1,27 @@
+<div class="success-container" *ngIf="order">
+
+  <h1>🎉 Order Placed Successfully!</h1>
+
+  <h3>Your Order ID: #{{ order.id }}</h3>
+
+  <p>Thank you, <strong>{{ order.customerName }}</strong>!</p>
+
+  <hr />
+
+  <h2>Order Summary</h2>
+
+  <div *ngFor="let item of order.items">
+    <strong>{{ item.name }}</strong> — ₹{{ item.price }} × {{ item.quantity }}
+  </div>
+
+  <h3>Total Amount: ₹{{ order.totalAmount }}</h3>
+
+  <hr />
+
+  <button routerLink="/home" class="home-btn">Go to Homepage</button>
+
+</div>
+
+<div *ngIf="!order">
+  <h2>Loading your order...</h2>
+</div>

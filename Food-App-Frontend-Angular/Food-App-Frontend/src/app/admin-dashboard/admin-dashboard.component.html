@@ -1,0 +1,59 @@
+<div class="dashboard-wrapper" *ngIf="stats">
+
+  <h1 class="heading">📊 Admin Dashboard</h1>
+  <p class="subheading">Overview of system performance</p>
+
+  <!-- Top Stats -->
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <div class="icon bg-blue">📦</div>
+      <div>
+        <h3>Total Orders</h3>
+        <p class="number">{{ stats.totalOrders }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="icon bg-green">💰</div>
+      <div>
+        <h3>Total Revenue</h3>
+        <p class="number">₹{{ stats.totalRevenue }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="icon bg-orange">📅</div>
+      <div>
+        <h3>Today's Orders</h3>
+        <p class="number">{{ stats.todayOrders }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card big-card">
+      <div class="icon bg-purple">📈</div>
+      <div>
+        <h3>Orders by Status</h3>
+
+        <ul>
+          <li><span>Placed:</span> {{ stats.statusCounts.PLACED }}</li>
+          <li><span>Confirmed:</span> {{ stats.statusCounts.CONFIRMED }}</li>
+          <li><span>Out for Delivery:</span> {{ stats.statusCounts.OUT_FOR_DELIVERY }}</li>
+          <li><span>Delivered:</span> {{ stats.statusCounts.DELIVERED }}</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Quick Actions -->
+  <h2 class="section-title">Quick Actions</h2>
+  <div class="action-buttons">
+    <button routerLink="/admin/orders" class="btn primary">Manage Orders</button>
+    <button routerLink="/restaurants" class="btn secondary">View Restaurants</button>
+    <button routerLink="/add-restaurant" class="btn accent">Add Restaurant</button>
+  </div>
+
+</div>
+
+<div *ngIf="!stats" class="loading">Loading Dashboard...</div>

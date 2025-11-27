@@ -9,7 +9,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class UserLoginService {
 
-    private url = 'http://localhost:9099/api/v1.0/foodapp/restaurants/all';
+    private url = 'http://localhost:8080/api/v1.0/foodapp/restaurants/all';
 
     constructor(private http: HttpClient) { }
 

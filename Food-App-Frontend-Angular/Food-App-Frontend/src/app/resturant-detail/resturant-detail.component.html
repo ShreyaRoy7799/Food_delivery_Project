@@ -1,0 +1,62 @@
+<div class="restaurant-wrapper">
+
+  <!-- BACK BUTTON -->
+  <button class="back-btn" routerLink="/restaurants">← Back to Restaurants</button>
+
+  <!-- RESTAURANT HEADER -->
+  <div class="restaurant-header">
+    <h1>{{ restaurant?.name }}</h1>
+    <p class="resto-meta">ID: {{ restaurant?.id }}</p>
+  </div>
+
+  <!-- MENUS -->
+  <div *ngFor="let menu of restaurant?.menus" class="menu-section">
+
+    <!-- Menu Title -->
+    <div class="menu-header">
+      <h2>{{ menu.name }}</h2>
+      <span class="menu-type-tag">{{ menu.type }}</span>
+    </div>
+
+    <!-- Items Grid -->
+    <div class="items-grid">
+      <div class="item-card" *ngFor="let item of menu.items">
+
+        <div class="item-info">
+          <h3>{{ item.name }}</h3>
+          <p class="price">₹{{ item.price }}</p>
+          <p class="rating">⭐ {{ item.rating }}</p>
+        </div>
+
+        <button class="add-cart-btn" (click)="addToCart(item)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+
+    <!-- ADMIN - ADD ITEM -->
+    <div *ngIf="isAdmin" class="admin-panel">
+      <h3>Add Item</h3>
+
+      <input [(ngModel)]="itemName" placeholder="Item name" />
+      <input [(ngModel)]="itemPrice" placeholder="Price" type="number" />
+      <input [(ngModel)]="itemRating" placeholder="Rating" type="number" />
+
+      <button class="admin-action-btn"
+              (click)="selectedMenuId = menu.id; addMenuItem()">
+        Add Item
+      </button>
+    </div>
+  </div>
+
+  <!-- ADMIN - ADD MENU -->
+  <div *ngIf="isAdmin" class="admin-panel">
+    <h2>Add New Menu</h2>
+
+    <input [(ngModel)]="menuName" placeholder="Menu name" />
+    <input [(ngModel)]="menuType" placeholder="Menu type (VEG/NON-VEG)" />
+
+    <button class="admin-action-btn" (click)="addMenu()">Add Menu</button>
+  </div>
+
+</div> 
