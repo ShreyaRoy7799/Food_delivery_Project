@@ -1,0 +1,44 @@
+<html>
+<body>
+    <div>
+      <h2>Signup for a new account!</h2>
+      <div class="alert alert-danger" role="alert" *ngIf='errorOccured'>
+        {{errorMessage}}
+      </div>
+      <div class="alert alert-success" role="alert" *ngIf='isSuccess'>
+        {{sucessMessage | json}}
+      </div>
+    <div class="Register">
+      <form #createUserForm = "ngForm" (ngSubmit) = "onClickSubmit(createUserForm)">
+        <div class="form-group">
+          <label for="username">User Name</label>
+          <input type="text" class="form-control" name="username" placeholder="Enter a user name" ngModel required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" placeholder="Enter Email" ngModel required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="text" class="form-control" name="password" placeholder="Enter Password" ngModel required>
+        </div>
+        <div class="form-group">
+            <label for="confrimPassword">Confirm Password</label>
+            <input type="password" class="form-control" name="confrimPassword" placeholder="Enter Password Again" ngModel required>
+        </div>
+        <div class="form-group">
+            <label for="accessLevel">Access</label>
+            <div class="form-group">
+            <input type="radio" name="userType">
+            <label for="userAccess">User</label>
+            <input type="radio" name="userType">
+            <label for="adminAccess">Admin</label></div>
+        </div>
+        <div *ngIf="passwordMatchError">
+            Password does not match</div>
+        <button type="submit" [disabled]="" class="btn btn-primary">Submit</button>
+      </form>
+      </div>
+    </div>
+</body>    
+</html>

@@ -1,0 +1,20 @@
+<html>
+  <body>
+    <h2 class='navbar-brand' id="pageTitle">{{pageTitle}}</h2>
+   <div> 
+    <div>
+        <form class="container" id="contactForm">
+        <div class="card">
+          <h2 style=" color:rgb(30, 191, 255); ">Please Login to Continue</h2>
+          
+          <div class="btn-in">
+            <button id="btn-l"><a class='btn btn-link' routerLinkActive='active' routerLink='/user-login'>Login</a></button>
+            <button id="btn-r"><a class='btn btn-link' routerLinkActive='active' routerLink='/user-signup'>Signup</a></button>
+          </div>
+          <router-outlet></router-outlet>
+        </div>
+        </form>
+</div>
+</div>
+</body>
+</html>
